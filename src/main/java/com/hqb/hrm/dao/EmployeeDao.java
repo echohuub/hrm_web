@@ -24,7 +24,7 @@ import org.apache.ibatis.mapping.FetchType;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.EMPLOYEETABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_EMPLOYEE;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -58,11 +58,11 @@ public interface EmployeeDao {
     void save(Employee employee);
 
     // 根据id删除员工
-    @Delete(" delete from " + EMPLOYEETABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_EMPLOYEE + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 根据id查询员工
-    @Select("select * from " + EMPLOYEETABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_EMPLOYEE + " where ID = #{id}")
     @Results({
             @Result(id = true, column = "id", property = "id"),
             @Result(column = "CARD_ID", property = "cardId"),

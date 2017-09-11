@@ -24,7 +24,7 @@ import org.apache.ibatis.mapping.FetchType;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.NOTICETABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_NOTICE;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -45,11 +45,11 @@ public interface NoticeDao {
     @SelectProvider(type = NoticeDynaSqlProvider.class, method = "count")
     Integer count(Map<String, Object> params);
 
-    @Select("select * from " + NOTICETABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_NOTICE + " where ID = #{id}")
     Notice selectById(int id);
 
     // 根据id删除公告
-    @Delete(" delete from " + NOTICETABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_NOTICE + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 动态插入公告

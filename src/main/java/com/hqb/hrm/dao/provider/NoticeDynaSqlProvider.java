@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.NOTICETABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_NOTICE;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class NoticeDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(NOTICETABLE);
+                FROM(TABLE_NOTICE);
                 if (params.get("notice") != null) {
                     Notice notice = (Notice) params.get("notice");
                     if (notice.getTitle() != null && !notice.getTitle().equals("")) {
@@ -57,7 +57,7 @@ public class NoticeDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(NOTICETABLE);
+                FROM(TABLE_NOTICE);
                 if (params.get("notice") != null) {
                     Notice notice = (Notice) params.get("notice");
                     if (notice.getTitle() != null && !notice.getTitle().equals("")) {
@@ -76,7 +76,7 @@ public class NoticeDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(NOTICETABLE);
+                INSERT_INTO(TABLE_NOTICE);
                 if (notice.getTitle() != null && !notice.getTitle().equals("")) {
                     VALUES("title", "#{title}");
                 }
@@ -95,7 +95,7 @@ public class NoticeDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(NOTICETABLE);
+                UPDATE(TABLE_NOTICE);
                 if (notice.getTitle() != null && !notice.getTitle().equals("")) {
                     SET(" title = #{title} ");
                 }

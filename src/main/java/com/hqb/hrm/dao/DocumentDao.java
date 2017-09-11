@@ -24,7 +24,7 @@ import org.apache.ibatis.mapping.FetchType;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.DOCUMENTTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_DOCUMENT;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -49,11 +49,11 @@ public interface DocumentDao {
     @SelectProvider(type = DocumentDynaSqlProvider.class, method = "insertDocument")
     void save(Document document);
 
-    @Select("select * from " + DOCUMENTTABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_DOCUMENT + " where ID = #{id}")
     Document selectById(int id);
 
     // 根据id删除文档
-    @Delete(" delete from " + DOCUMENTTABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_DOCUMENT + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 动态修改文档

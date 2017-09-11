@@ -25,17 +25,17 @@ import org.apache.ibatis.annotations.SelectProvider;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.JOBTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_JOB;
 
 /**
  * Created by heqingbao on 2017/9/8.
  */
 public interface JobDao {
 
-    @Select("select * from " + JOBTABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_JOB + " where ID = #{id}")
     Job selectById(int id);
 
-    @Select("select * from " + JOBTABLE + " ")
+    @Select("select * from " + TABLE_JOB + " ")
     List<Job> selectAllJob();
 
     // 动态查询
@@ -46,7 +46,7 @@ public interface JobDao {
     Integer count(Map<String, Object> params);
 
     // 根据id删除部门
-    @Delete(" delete from " + JOBTABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_JOB + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 动态插入部门

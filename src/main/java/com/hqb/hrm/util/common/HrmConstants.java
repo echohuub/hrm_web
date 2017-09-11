@@ -22,12 +22,12 @@ package com.hqb.hrm.util.common;
 public class HrmConstants {
 
     // 数据库表常量
-    public static final String USERTABLE = "user_inf";
-    public static final String DEPTTABLE = "dept_inf";
-    public static final String JOBTABLE = "job_inf";
-    public static final String EMPLOYEETABLE = "employee_inf";
-    public static final String NOTICETABLE = "notice_inf";
-    public static final String DOCUMENTTABLE = "document_inf";
+    public static final String TABLE_USER = "user";
+    public static final String TABLE_DEPT = "dept";
+    public static final String TABLE_JOB = "job";
+    public static final String TABLE_EMPLOYEE = "employee";
+    public static final String TABLE_NOTICE = "notice";
+    public static final String TABLE_DOCUMENT = "document";
 
     // 登录
     public static final String LOGIN = "loginForm";

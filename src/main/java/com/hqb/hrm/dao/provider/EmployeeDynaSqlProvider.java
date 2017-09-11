@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.EMPLOYEETABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_EMPLOYEE;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class EmployeeDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(EMPLOYEETABLE);
+                FROM(TABLE_EMPLOYEE);
                 if (params.get("employee") != null) {
                     Employee employee = (Employee) params.get("employee");
                     if (employee.getDept() != null && employee.getDept().getId() != null && employee.getDept().getId() != 0) {
@@ -69,7 +69,7 @@ public class EmployeeDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(EMPLOYEETABLE);
+                FROM(TABLE_EMPLOYEE);
                 if (params.get("employee") != null) {
                     Employee employee = (Employee) params.get("employee");
                     if (employee.getDept() != null && employee.getDept().getId() != null && employee.getDept().getId() != 0) {
@@ -100,7 +100,7 @@ public class EmployeeDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(EMPLOYEETABLE);
+                INSERT_INTO(TABLE_EMPLOYEE);
                 if (employee.getName() != null) {
                     VALUES("name", "#{name}");
                 }
@@ -167,7 +167,7 @@ public class EmployeeDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(EMPLOYEETABLE);
+                UPDATE(TABLE_EMPLOYEE);
                 if (employee.getName() != null) {
                     SET(" name = #{name} ");
                 }

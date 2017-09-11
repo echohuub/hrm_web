@@ -25,7 +25,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.DEPTTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_DEPT;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -39,14 +39,14 @@ public interface DeptDao {
     @SelectProvider(type = DeptDynaSqlProvider.class, method = "count")
     Integer count(Map<String, Object> params);
 
-    @Select("select * from " + DEPTTABLE + " ")
+    @Select("select * from " + TABLE_DEPT + " ")
     List<Dept> selectAllDept();
 
-    @Select("select * from " + DEPTTABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_DEPT + " where ID = #{id}")
     Dept selectById(int id);
 
     // 根据id删除部门
-    @Delete(" delete from " + DEPTTABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_DEPT + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 动态插入部门

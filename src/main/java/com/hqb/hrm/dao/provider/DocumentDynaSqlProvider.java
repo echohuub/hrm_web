@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.DOCUMENTTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_DOCUMENT;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class DocumentDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(DOCUMENTTABLE);
+                FROM(TABLE_DOCUMENT);
                 if (params.get("document") != null) {
                     Document document = (Document) params.get("document");
                     if (document.getTitle() != null && !document.getTitle().equals("")) {
@@ -54,7 +54,7 @@ public class DocumentDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(DOCUMENTTABLE);
+                FROM(TABLE_DOCUMENT);
                 if (params.get("document") != null) {
                     Document document = (Document) params.get("document");
                     if (document.getTitle() != null && !document.getTitle().equals("")) {
@@ -70,7 +70,7 @@ public class DocumentDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(DOCUMENTTABLE);
+                INSERT_INTO(TABLE_DOCUMENT);
                 if (document.getTitle() != null && !document.getTitle().equals("")) {
                     VALUES("title", "#{title}");
                 }
@@ -92,7 +92,7 @@ public class DocumentDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(DOCUMENTTABLE);
+                UPDATE(TABLE_DOCUMENT);
                 if (document.getTitle() != null && !document.getTitle().equals("")) {
                     SET(" title = #{title} ");
                 }

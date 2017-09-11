@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.JOBTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_JOB;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class JobDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(JOBTABLE);
+                FROM(TABLE_JOB);
                 if (params.get("job") != null) {
                     Job job = (Job) params.get("job");
                     if (job.getName() != null && !job.getName().equals("")) {
@@ -54,7 +54,7 @@ public class JobDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(JOBTABLE);
+                FROM(TABLE_JOB);
                 if (params.get("job") != null) {
                     Job job = (Job) params.get("job");
                     if (job.getName() != null && !job.getName().equals("")) {
@@ -70,7 +70,7 @@ public class JobDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(JOBTABLE);
+                INSERT_INTO(TABLE_JOB);
                 if (job.getName() != null && !job.getName().equals("")) {
                     VALUES("name", "#{name}");
                 }
@@ -86,7 +86,7 @@ public class JobDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(JOBTABLE);
+                UPDATE(TABLE_JOB);
                 if (job.getName() != null) {
                     SET(" name = #{name} ");
                 }

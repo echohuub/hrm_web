@@ -27,7 +27,7 @@ import org.apache.ibatis.annotations.SelectProvider;
 import java.util.List;
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.USERTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_USER;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -35,17 +35,17 @@ import static com.hqb.hrm.util.common.HrmConstants.USERTABLE;
 public interface UserDao {
 
     // 根据登录名和密码查询员工
-    @Select("select * from " + USERTABLE + " where loginname = #{loginname} and password = #{password}")
+    @Select("select * from " + TABLE_USER + " where loginname = #{loginname} and password = #{password}")
     User selectByLoginnameAndPassword(
             @Param("loginname") String loginname,
             @Param("password") String password);
 
     // 根据id查询用户
-    @Select("select * from " + USERTABLE + " where ID = #{id}")
+    @Select("select * from " + TABLE_USER + " where ID = #{id}")
     User selectById(Integer id);
 
     // 根据id删除用户
-    @Delete(" delete from " + USERTABLE + " where id = #{id} ")
+    @Delete(" delete from " + TABLE_USER + " where id = #{id} ")
     void deleteById(Integer id);
 
     // 动态修改用户

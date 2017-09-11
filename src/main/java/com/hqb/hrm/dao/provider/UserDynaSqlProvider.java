@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.USERTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_USER;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class UserDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(USERTABLE);
+                FROM(TABLE_USER);
                 if (params.get("user") != null) {
                     User user = (User) params.get("user");
                     if (user.getUsername() != null && !user.getUsername().equals("")) {
@@ -57,7 +57,7 @@ public class UserDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(USERTABLE);
+                FROM(TABLE_USER);
                 if (params.get("user") != null) {
                     User user = (User) params.get("user");
                     if (user.getUsername() != null && !user.getUsername().equals("")) {
@@ -76,7 +76,7 @@ public class UserDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(USERTABLE);
+                INSERT_INTO(TABLE_USER);
                 if (user.getUsername() != null && !user.getUsername().equals("")) {
                     VALUES("username", "#{username}");
                 }
@@ -98,7 +98,7 @@ public class UserDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(USERTABLE);
+                UPDATE(TABLE_USER);
                 if (user.getUsername() != null) {
                     SET(" username = #{username} ");
                 }

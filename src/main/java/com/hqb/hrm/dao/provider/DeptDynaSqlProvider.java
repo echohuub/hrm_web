@@ -21,7 +21,7 @@ import org.apache.ibatis.jdbc.SQL;
 
 import java.util.Map;
 
-import static com.hqb.hrm.util.common.HrmConstants.DEPTTABLE;
+import static com.hqb.hrm.util.common.HrmConstants.TABLE_DEPT;
 
 /**
  * Created by heqingbao on 2017/9/8.
@@ -32,7 +32,7 @@ public class DeptDynaSqlProvider {
         String sql = new SQL() {
             {
                 SELECT("*");
-                FROM(DEPTTABLE);
+                FROM(TABLE_DEPT);
                 if (params.get("dept") != null) {
                     Dept dept = (Dept) params.get("dept");
                     if (dept.getName() != null && !dept.getName().equals("")) {
@@ -54,7 +54,7 @@ public class DeptDynaSqlProvider {
         return new SQL() {
             {
                 SELECT("count(*)");
-                FROM(DEPTTABLE);
+                FROM(TABLE_DEPT);
                 if (params.get("dept") != null) {
                     Dept dept = (Dept) params.get("dept");
                     if (dept.getName() != null && !dept.getName().equals("")) {
@@ -70,7 +70,7 @@ public class DeptDynaSqlProvider {
 
         return new SQL() {
             {
-                INSERT_INTO(DEPTTABLE);
+                INSERT_INTO(TABLE_DEPT);
                 if (dept.getName() != null && !dept.getName().equals("")) {
                     VALUES("name", "#{name}");
                 }
@@ -86,7 +86,7 @@ public class DeptDynaSqlProvider {
 
         return new SQL() {
             {
-                UPDATE(DEPTTABLE);
+                UPDATE(TABLE_DEPT);
                 if (dept.getName() != null) {
                     SET(" name = #{name} ");
                 }
