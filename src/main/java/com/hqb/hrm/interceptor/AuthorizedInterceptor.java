@@ -18,6 +18,7 @@ package com.hqb.hrm.interceptor;
 
 import com.hqb.hrm.domain.User;
 import com.hqb.hrm.util.common.HrmConstants;
+import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,6 +30,8 @@ import javax.servlet.http.HttpServletResponse;
  * 判断用户权限的Spring MVC的拦截器
  */
 public class AuthorizedInterceptor implements HandlerInterceptor {
+
+    private static final Logger logger = Logger.getLogger(AuthorizedInterceptor.class);
     /**
      * 定义不需要拦截的请求
      */
@@ -74,6 +77,8 @@ public class AuthorizedInterceptor implements HandlerInterceptor {
                 break;
             }
         }
+
+        logger.info(flag + ", " + servletPath);
 
         /** 拦截请求 */
         if (!flag) {
