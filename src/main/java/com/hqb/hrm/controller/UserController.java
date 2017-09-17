@@ -83,7 +83,6 @@ public class UserController {
     public String selectUser(Integer pageIndex,
                              @ModelAttribute User user,
                              Model model) {
-        System.out.println("user = " + user);
         PageModel pageModel = new PageModel();
         if (pageIndex != null) {
             pageModel.setPageIndex(pageIndex);
@@ -122,13 +121,12 @@ public class UserController {
      *
      * @param flag 标记， 1表示跳转到修改页面，2表示执行修改操作
      * @param user 要修改用户的对象
-     * @param mv
      */
     @RequestMapping(value = "/user/updateUser")
     public ModelAndView updateUser(
             String flag,
-            @ModelAttribute User user,
-            ModelAndView mv) {
+            User user) {
+        ModelAndView mv = new ModelAndView();
         if (flag.equals("1")) {
             // 根据id查询用户
             User target = hrmService.findUserById(user.getId());
@@ -152,13 +150,12 @@ public class UserController {
      *
      * @param flag 标记， 1表示跳转到添加页面，2表示执行添加操作
      * @param user 要添加用户的对象
-     * @param mv
      */
     @RequestMapping(value = "/user/addUser")
     public ModelAndView addUser(
             String flag,
-            @ModelAttribute User user,
-            ModelAndView mv) {
+            User user) {
+        ModelAndView mv = new ModelAndView();
         if (flag.equals("1")) {
             // 设置跳转到添加页面
             mv.setViewName("user/showAddUser");
@@ -170,5 +167,11 @@ public class UserController {
         }
         // 返回
         return mv;
+    }
+
+    @RequestMapping("/user/logout")
+    public ModelAndView logout(HttpSession session) {
+        session.removeAttribute(HrmConstants.USER_SESSION);
+        return new ModelAndView("redirect:/loginForm");
     }
 }
