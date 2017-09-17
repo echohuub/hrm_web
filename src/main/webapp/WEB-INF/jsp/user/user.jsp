@@ -154,7 +154,7 @@
                     pageSize="${requestScope.pageModel.pageSize}"
                     recordCount="${requestScope.pageModel.recordCount}"
                     style="digg"
-                    submitUrl="${ctx}/employee/selectEmployee?pageIndex={0}"/>
+                    submitUrl="${ctx}/user/selectUser?pageIndex={0}"/>
         </td>
     </tr>
 </table>
